@@ -34,4 +34,21 @@ var Tree = function(value) {
 };
 
 
+Tree.prototype.addChild = function(value) {
+	var newNode = new Tree(value);
+	this.children.push(newNode);
+	return newNode;
+};
 
+Tree.prototype.map = function(maping){
+	let root = root || new Tree(maping(this.value)) ;
+ for(var i = 0 ; i < this.children.length;i++){
+    root.children[i] = new Tree(maping(this.children[i].value));
+    root.children[i].map(mapping);
+ }
+ return root;
+}
+
+/*
+unfinished
+*/
